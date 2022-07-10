@@ -15,17 +15,53 @@
 
     <!--Create cards for each fo the sections of the site-->
     <main>
-        <section id="city-search">
-
+        <div id="top-section" class="container-fluid" style="height: 300px width=300px;">
+        <section id="city-search" class="row d-flex h-100">
+            <div class="card d-flex col-md-3 border-dark" style="background-color: lightblue;">
+                <form id="cityinputform">
+                    <h2 class="sec-head text-center">Enter City Here:</h2>
+                    <div id="error-message"></div>
+                    <input type="text" id="cityinput">
+                    <button type="button" class="btn" id="searchbtn">Search</button>
+                </form>
+            </div>
         </section>
         <section id="weather-results">
+            <div class="card d-flex border-dark col-md-7" style="background-color: lightblue;">
+                <h2 class="sec-head text-center" id="todayweather"></h2>
+                <div class="card-content">
+                    <p id= "city-date"></p>
+                    <p id="temp"> </p> 
+                    <p id = "feels-like" ></p>
+                    <p id = "wind"></p>
+                    <p id = "humidity"></p>
+                    <p id = "UV-index"></p>
+                </div>
+            </div>
+        </div>
 
         </section>
-        <section id="search-history">
+        <section class="container-fluid history-forecast">
+            <div class="col-md-3">
+                <div class="card d-flex h-100 border-dark" id="search-history">
+                    <h4 class="sec-head" style="background-color:lightblue"> Previous Searches </h4>
+                        <div class="card-body" id="history-list"> 
+                        </div>                    
+                </div>
+            </div>
 
         </section>
         <section id="forecast">
-            
+
+            <h3 class="sec-head" style="background-color: lightblue;">5 Day Forecast:</h3>
+            <div class="card-deck d-flex h-75 w-75;">
+                <div class="card" id="d1"></div>
+                <div class="card" id="d2"></div>
+                <div class="card" id="d3"></div>
+                <div class="card" id="d4"></div>
+                <div class="card" id="d5"></div>
+            </div>
+        
         </section>
     </main>
 
