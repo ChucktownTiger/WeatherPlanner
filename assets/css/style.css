@@ -1,0 +1,11 @@
+#history-list ul {
+    list-style-type: none;
+ }
+ 
+ .weather-results {
+     display:none;
+ }
+ 
+ .history-forecast {
+     display:none;
+ }
