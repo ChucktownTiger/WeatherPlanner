@@ -18,6 +18,7 @@ var d2El = document.getElementById("d2")
 var d3El = document.getElementById ("d3")
 var d4El = document.getElementById ("d4")
 var d5El = document.getElementById ("d5")
+var forecastArr = []
 
 var getWeatherData = function(userSearch) {
 
@@ -56,7 +57,7 @@ var getWeatherData = function(userSearch) {
         // setting current date to a variable, multiply by 1000 because dt is UNIX time
         let currentDate = new Date(data.dt *1000)
         let date = currentDate.getDate()
-        let month = currentDate.getMonth()
+        let month = currentDate.getMonth()+1
         let year = currentDate.getFullYear()
         todaysWeatherEl.textContent = data.name + " " + month + "/" + date + "/"  + year
 
@@ -78,23 +79,6 @@ var getWeatherData = function(userSearch) {
             var UVQueryUrl = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&APPID=" + APIKey;
             
             
-            fetch(UVQueryUrl)
-            .then(response => response.json())
-            .then(data => {
-
-                var UVIndexValue = document.createElement("span")           
-                if (data[0].value <=2) {
-                    UVIndexEl.setAttribute("class", "badge badge-success")
-                } else if (data[0].value >=3 && data[0].value <=7) {
-                UVIndexValue.setAttribute("class", "badge badge-warning")
-                } else {
-                UVIndexValue.setAttribute("class", "badge badge-warning")
-                }
-                UVIndexEl.innerHTML = "UV Index:" + " "
-                UVIndexValue.innerHTML = data[0].value
-                UVIndexEl.append(UVIndexValue)
-            })
-
         // five day forecast 
 
         var fiveDayQueryUrl =  "https://api.openweathermap.org/data/2.5/onecall?units=imperial&lat=" + lat + "&lon=" + lon + "&APPID=" + APIKey;
@@ -105,7 +89,7 @@ var getWeatherData = function(userSearch) {
             
             // create forecast array
 
-            var forecastArray = [d1El, d2El, d3El, d4El, d5El]
+            var forecastArr = [d1El, d2El, d3El, d4El, d5El]
             var k=0
             
             for (let i = 1; i < 8; i++) {           
@@ -117,7 +101,7 @@ var getWeatherData = function(userSearch) {
 
             let iDate = new Date(data.daily[i].dt *1000)
             let idate = iDate.getDate()
-            let imonth = iDate.getMonth()
+            let imonth = iDate.getMonth()+1
             let iyear = iDate.getFullYear()
             dateTitle.innerHTML= imonth + "/" + idate + "/"  + iyear
 
@@ -129,14 +113,16 @@ var getWeatherData = function(userSearch) {
            feelsLikeP.innerHTML = "Feels Like:" + " " + data.daily[i].feels_like.day + '\u00B0F'
            windP.innerHTML = "Wind:" + " " + data.daily[i].wind_speed + "mph"
            humidityP.innerHTML = "Humidity:" + " " + data.daily[i].humidity + "%"
+
+           
            
            // append the elements
-          forecastArray[k].append(dateTitle)
-          forecastArray[k].append(iWeatherIconImg)
-          forecastArray[k].append(tempP)
-          forecastArray[k].append(feelsLikeP)
-          forecastArray[k].append(windP)
-          forecastArray[k].append(humidityP)
+          forecastArr[k].append(dateTitle)
+          forecastArr[k].append(iWeatherIconImg)
+          forecastArr[k].append(tempP)
+          forecastArr[k].append(feelsLikeP)
+          forecastArr[k].append(windP)
+          forecastArr[k].append(humidityP)
           k++
         }
         })
