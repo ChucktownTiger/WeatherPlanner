@@ -15,19 +15,19 @@
 
     <!--Create cards for each fo the sections of the site-->
     <main>
-        <div id="top-section" class="container-fluid" style="height: 300px width=300px;">
-        <section id="city-search" class="row d-flex h-100">
-            <div class="card d-flex col-md-3 border-dark" style="background-color: lightblue;">
+        <div id="top-section" class="container-fluid d-inline-flex" >
+        <section id="city-search" class="row d-flex" style="height: 300px width=300px;">
+            <div class="card d-flex border-dark col-12" style="background-color: lightblue;">
                 <form id="cityinputform">
                     <h2 class="sec-head text-center">Enter City Here:</h2>
                     <div id="error-message"></div>
                     <input type="text" id="cityinput">
-                    <button type="button" class="btn" id="searchbtn">Search</button>
+                    <button type="button" class="btn btn-primary" id="searchbtn" style="margin: 20px;">Search</button>
                 </form>
             </div>
         </section>
-        <section class="weather-results">
-            <div class="card d-flex border-dark col-md-7" style="background-color: lightblue;">
+        <section class="weather-results" >
+            <div class="card d-flex border-dark col-7" style="background-color: lightblue; margin-left: 20px;">
                 <h2 class="sec-head text-center" id="todayweather"></h2>
                 <div class="card-content">
                     <p id= "city-date"></p>
@@ -51,7 +51,7 @@
             </div>
 
         </section>
-        <section id="forecast">
+        <section class="five-day-forecast" id="fiveday">
 
             <h3 class="sec-head" style="background-color: lightblue;">5 Day Forecast:</h3>
             <div class="card-deck d-flex h-75 w-75;">
